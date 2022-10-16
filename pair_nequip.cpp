@@ -320,7 +320,7 @@ void PairNEQUIP::compute(int eflag, int vflag){
   // Total number of bonds (sum of number of neighbors)
   int nedges = std::accumulate(numneigh, numneigh+ntotal, 0);
 
-  std::cout << nedges <<"\n";
+  std::cout << "nedges: " << nedges <<"\n";
 
   std::abort();
 
