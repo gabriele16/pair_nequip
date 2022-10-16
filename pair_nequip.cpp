@@ -320,6 +320,10 @@ void PairNEQUIP::compute(int eflag, int vflag){
   // Total number of bonds (sum of number of neighbors)
   int nedges = std::accumulate(numneigh, numneigh+ntotal, 0);
 
+  std::cout << nedges <<"\n";
+
+  std::abort();
+
   torch::Tensor pos_tensor = torch::zeros({nlocal, 3});
   torch::Tensor tag2type_tensor = torch::zeros({nlocal}, torch::TensorOptions().dtype(torch::kInt64));
   torch::Tensor periodic_shift_tensor = torch::zeros({3});
