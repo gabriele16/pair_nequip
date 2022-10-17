@@ -320,6 +320,11 @@ void PairNEQUIP::compute(int eflag, int vflag){
   // Total number of bonds (sum of number of neighbors)
   int nedges = std::accumulate(numneigh, numneigh+ntotal, 0);
 
+  for (p = &ilist[0]; p <= &ilist[ilist.size()-1]; p++)
+  {
+    printf("%d ", *p)
+  }
+
   std::cout << "nedges: " << nedges <<"\n";
 
   torch::Tensor pos_tensor = torch::zeros({nlocal, 3});
@@ -352,6 +357,7 @@ void PairNEQUIP::compute(int eflag, int vflag){
   }
 
   // Get cell
+  // hard-coded for now;
   cell[0][0] = domain->boxhi[0] - domain->boxlo[0];
 
   cell[1][0] = domain->xy;
