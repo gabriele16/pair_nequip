@@ -322,8 +322,6 @@ void PairNEQUIP::compute(int eflag, int vflag){
 
   std::cout << "nedges: " << nedges <<"\n";
 
-  std::abort();
-
   torch::Tensor pos_tensor = torch::zeros({nlocal, 3});
   torch::Tensor tag2type_tensor = torch::zeros({nlocal}, torch::TensorOptions().dtype(torch::kInt64));
   torch::Tensor periodic_shift_tensor = torch::zeros({3});
@@ -363,14 +361,14 @@ void PairNEQUIP::compute(int eflag, int vflag){
   cell[2][1] = domain->yz;
   cell[2][2] = domain->boxhi[2] - domain->boxlo[2];
 
-  /*
   std::cout << "cell: " << cell_tensor << "\n";
   std::cout << "tag2i: " << "\n";
   for(int itag = 0; itag < inum; itag++){
     std::cout << tag2i[itag] << " ";
   }
   std::cout << std::endl;
-  */
+
+  std::abort();
 
   auto cell_inv = cell_tensor.inverse().transpose(0,1);
 
